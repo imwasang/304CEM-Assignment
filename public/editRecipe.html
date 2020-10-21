@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Recipe</title>
+    <link rel="stylesheet" href="/lib/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="/stylesheets/base.css">
+    <script src="/lib/jquery/jquery.js"></script>
+    <script src="/lib/bootstrap/bootstrap.js"></script>
+    <script src="/lib/vue/vue.js"></script>
+    <script src="/js/base.js"></script>
+      
+    <style>
+        #app .main-form {
+            justify-content: center;
+            border: 1px solid #ccc;
+            padding: 90px 0 100px;
+            border-radius: 3px;
+            display: flex;
+        }
+
+        #app input:focus,
+        #app textarea:focus {
+            box-shadow: none;
+        }
+
+        #app .file-upload {
+            padding: 0;
+            width: 100px;
+            height: 36px;
+            text-align: center;
+            line-height: 36px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #app .file-upload input {
+            position: absolute;
+            cursor: pointer;
+            opacity: 0;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            top: -60px;
+        }
+
+        .preview-img {
+            width: 100%;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <recipe-nav></recipe-nav>
+        <div class="container content mt-5">
+            <div v-if="errorMessage" class="alert alert-danger msg mb-5 alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{errorMessage}}
+            </div>
+            <div class="main-form">
+                <form class="col-md-8">
+                    <div class="form-group">
+                        <input autofocus v-model.trim="recipe.RecipeName" type="text" class="form-control mb-4"
+                            placeholder="Recipe Name:">
+                    </div>
+                    <div class="form-group">
+                        <select autofocus v-model.trim="recipe.RecipeCategory" class="form-control mb-4" placeholder="Recipe Category:">
+                            <option value="" selected disabled hidden>Recipe Category</option>
+                            <option value="Risotto" >Risotto</option>
+                            <option value="Soup">Soup</option>
+                            <option value="Spaghetti">Spaghetti</option>
+                        </select>
+
+                       <!--  <input autofocus v-model.trim="recipe.RecipeCategory" type="text" class="form-control mb-4"
+                            placeholder="Recipe Category:"> -->
+                    </div>
+                    <div class="form-group">
+                        <input autofocus v-model.trim="recipe.RecipeTime" type="text" class="form-control mb-4"
+                            placeholder="Recipe Time:">
+                    </div>
+                    <div class="form-group">
+                        <textarea autofocus v-model.trim="recipe.RecipeMater" rows="5" type="text" class="form-control mb-4" placeholder="Ingredients:"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <textarea autofocus v-model.trim="recipe.RecipeStep" rows="15" type="text"
+                            class="form-control mb-4" placeholder="Recipe Steps:">
+                        </textarea>
+                    </div>
+                    <div class="form-group">
+                        <div class="file-upload btn btn-primary">
+                            <input @change="fileChange" type="file">
+                            Upload
+                        </div>
+                    </div>
+                    <div v-if="previewUrl" class="form-group">
+                        <p>Preview</p>
+                        <img class="preview-img" :src="previewUrl" alt="">
+                    </div>
+                    <button v-if="mode=='post'" @click.prevent="addEvent" type="submit"
+                        class="btn login-btn">Submit</button>
+                    <button v-else @click.prevent="addEvent" type="submit" class="btn login-btn">Submit</button>
+                </form>
+            </div>
+        </div>
+
+        <div aria-live="polite" aria-atomic="true" class="toast-wrap">
+            <div class="toast" style="position: absolute; top: 0; right: 0;">
+                <div class="toast-header">
+                    <strong class="mr-4">Message</strong>
+                    <small>1 second ago</small>
+                    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="toast-body">
+                    Submit successfully
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            mixins: [userMixin, toastMixin],
+            data: {
+                mode: 'post',
+                recipe: {
+                    RecipeName: '',
+                    RecipeCategory: '',
+                    RecipeStep: '',
+                    RecipeTime: ''
+                },
+                previewUrl: '',
+                errorMessage: '',
+                formData: new FormData()
+            },
+            mounted: function () {
+                var that = this
+                that.validateLogin(function () {
+                    if(that.userInfo.Admin == 0) {
+                        location.href = '/index.html'
+                    }
+                    if (location.search.length > 1) {
+                        that.mode = 'put'
+                        $.ajax({
+                            url: '/api/recipe/' + location.search.replace(/\D/g, ''),
+                            success: function (res) {
+                                delete res.code
+                                that.previewUrl = res.RecipePicture
+                                res.oldRecipePicture = res.RecipePicture
+                                delete res.RecipePicture
+                                that.recipe = res
+                            }
+                        })
+                    }
+                })
+            },
+            methods: {
+                fileChange: function (e) {
+                    this.previewUrl = URL.createObjectURL(e.target.files[0])
+                    this.formData.append('RecipePicture', e.target.files[0])
+                },
+                addEvent: function () {
+                    var that = this
+                    if (that.mode == 'post') {
+                        delete this.recipe.oldRecipePicture
+                    }
+                    for (var attr in this.recipe) {
+                        if (this.recipe[attr].length == 0) {
+                            this.errorMessage = `${attr[0].toUpperCase() + attr.slice(1)} field is required`
+                            this.formData = new FormData()
+                            return
+                        }
+                        this.formData.append(attr, this.recipe[attr])
+                    }
+
+                    if (that.mode == 'post') {
+
+                        if (this.formData.has('RecipePicture') == false) {
+                            this.errorMessage = `RecipePicture field is required`
+                            this.formData = new FormData()
+                            return;
+                        }
+                    }
+
+
+                    $.ajax({
+                        url: '/api/recipe',
+                        type: that.mode,
+                        data: this.formData,
+                        contentType: false,
+                        processData: false,
+                        success: function (res) {
+                            if (res.code == 1) {
+                                $('.toast').toast({
+                                    delay: 1500
+                                }).toast('show')
+                                setTimeout(function () {
+                                    location.reload()
+                                }, 1000);
+                            }
+                        }
+                    })
+                }
+            },
+        })
+    </script>
+
+   
+</body>
+
+</html>

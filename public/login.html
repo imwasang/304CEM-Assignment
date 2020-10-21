@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/lib/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="/stylesheets/base.css">
+    <script src="/lib/jquery/jquery.js"></script>
+    <script src="/lib/bootstrap/bootstrap.js"></script>
+    <script src="/lib/vue/vue.js"></script>
+    <script src="/js/base.js"></script>
+    <style>
+        #app .login-box {
+            justify-content: center;
+            border: 1px solid #ccc;
+            padding: 90px 0 100px;
+            border-radius: 3px;
+        }
+
+        #app .login-box .alert {
+            width: 88%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #app .login-box h3 {
+            margin-bottom: 30px;
+            padding-left: 10px;
+            padding-top: 10px;
+            color: #666;
+        }
+
+        #app .login-box input {
+            border: 0;
+            border-bottom: 1px solid #ddd;
+            border-radius: 0;
+            margin-bottom: 20px;
+        }
+
+        #app .login-box input:focus {
+            outline: 0;
+            box-shadow: none;
+        }
+
+
+        #app .line {
+            height: 360px;
+            width: 2px;
+            margin: 0 2%;
+            background-color: #ccc;
+        }
+
+        #app .main-form {
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <recipe-nav></recipe-nav>
+        <div class="container content mt-5">
+            <div class="login-box">
+                <div v-if="errorMessage" class="alert alert-danger msg mb-5 alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{errorMessage}}
+                </div>
+                <div v-if="successMessage" class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{successMessage}}
+                </div>
+                <div class="row main-form">
+                    <div class="col-md-5">
+                        <h3>Login</h3>
+                        <form>
+                            <div class="form-group">
+                                <input autofocus v-model.trim="login.username" type="text" class="form-control"
+                                    placeholder="Username" id="username">
+                            </div>
+                            <div class="form-group">
+                                <input placeholder="Password" v-model.trim="login.password" type="password"
+                                    class="form-control" id="password">
+                            </div>
+                            <button @click.prevent="loginEvent" type="submit" class="btn login-btn">Login</button>
+                        </form>
+                    </div>
+                    <div class="line"></div>
+                    <div class="col-md-5">
+                        <h3>Register</h3>
+                        <form>
+                            <div class="form-group">
+                                <input placeholder="Username" autofocus v-model.trim="register.username" type="text"
+                                    class="form-control" id="username">
+                            </div>
+                            <div class="form-group">
+                                <input placeholder="Password" v-model.trim="register.password" type="password"
+                                    class="form-control" id="password">
+                            </div>
+                            <div class="form-group">
+                                <input placeholder="Email" v-model.trim="register.email" type="email"
+                                    class="form-control" id="email">
+                            </div>
+                            <button @click.prevent="registerEvent" type="submit" class="btn login-btn">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        new Vue({
+            el: '#app',
+            data: {
+                errorMessage: '',
+                successMessage: '',
+                register: {
+                    username: '',
+                    password: '',
+                    email: ''
+                },
+                login: {
+                    username: '',
+                    password: '',
+                }
+            },
+            methods: {
+                validate: function (key) {
+                    for (var attr in this[key]) {
+                        if (this[key][attr].length == 0) {
+                            this.errorMessage = `${attr[0].toUpperCase() + attr.slice(1)} field is required`
+                            $(`#${attr}`).focus()
+                            this.successMessage = ''
+                            return false
+                        }
+                    }
+                },
+                registerEvent: function () {
+                    var that = this
+                    if (this.validate('register') == false) {
+                        return
+                    }
+                    $.ajax({
+                        url: '/api/user/register',
+                        type: 'post',
+                        data: this.register,
+                        success: function (res) {
+                            if (res.code) {
+                                that.errorMessage = ''
+                                that.successMessage = 'Success'
+                            } else {
+                                that.errorMessage = res.message
+                                that.successMessage = ''
+                            }
+                        }
+                    })
+                },
+                loginEvent: function () {
+                    if (this.validate('login') == false) {
+                        return
+                    }
+                    var that = this
+                    $.ajax({
+                        url: '/api/user/login',
+                        type: 'post',
+                        data: this.login,
+                        error: function (res) {
+                            that.successMessage = ''
+                            that.errorMessage = res.responseJSON.message
+                        },
+                        success: function (res) {
+                            if (res.code) {
+                                that.errorMessage = ''
+                                that.successMessage = 'Success'
+
+                                if (location.search.length > 1) {
+                                    if (location.search.indexOf('editRecipe.html') != -1) {
+                                        setTimeout(function () {
+                                            location.href = '/login.html'
+                                        }, 1000);
+                                    } else {
+                                        location.href = location.search.replace('?url=', '')
+                                    }
+                                }
+
+                                setTimeout(function () {
+                                    location.reload()
+                                }, 1000);
+                            }
+                        }
+                    })
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

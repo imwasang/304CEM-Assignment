@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/lib/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="/stylesheets/base.css">
+    <script src="/lib/jquery/jquery.js"></script>
+    <script src="/lib/bootstrap/bootstrap.js"></script>
+    <script src="/lib/vue/vue.js"></script>
+    <script src="/js/base.js"></script>
+
+
+    <style>
+        #app .detail-txt {
+            white-space: pre-wrap;
+            overflow-x: hidden;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #666;
+            padding-right: 20px;
+        }
+
+        #app .favorite-btn {
+            height: 50px;
+            line-height: 50px;
+            border-radius: 25px;
+            border: 1px solid #ddd;
+            width: 75%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0;
+            color: #666;
+            font-weight: 600;
+            font-size: 26px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <recipe-nav></recipe-nav>
+        <div class="container content mt-5">
+            <img class="detail-img" :src="recipe.RecipePicture">
+            <div class="row">
+                <div class="col-md-8">
+                    <p class="category mt-5">{{recipe.RecipeCategory}}</p>
+                    <h4 class="name">{{recipe.RecipeName}}</h4>
+                    <p class="time">Cooking Time: {{recipe.RecipeTime}}</p>
+                </div>
+                <div class="col-md-4">
+                    <button v-if="favoriteBtnStatue" class="favorite-btn btn mt-5" type="button"
+                        @click="addFavorite(recipe.RecipeId)">Add to Favorite</button>
+
+                </div>
+            </div>
+            <h4>Ingredients:</h4>
+            <pre v-html="recipe.RecipeMater" class="detail-txt mt-5"></pre>
+            <h4>Procedures:</h4>
+            <pre v-html="recipe.RecipeStep" class="detail-txt mt-5"></pre>
+        </div>
+        <div aria-live="polite" aria-atomic="true" class="toast-wrap">
+            <div class="toast" style="position: absolute; top: 0; right: 0;">
+                <div class="toast-header">
+                    <strong class="mr-4">Message</strong>
+                    <small>1 second ago</small>
+                    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="toast-body">
+                    Added successfully
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    
+    <script>
+
+
+        new Vue({
+            el: '#app',
+            mixins: [userMixin, toastMixin],
+            data: {
+                recipe: {},
+                favoriteBtnStatue: false
+            },
+            mounted: function () {
+                var that = this;
+                $.ajax({
+                    url: '/api/recipe/' + location.search.replace(/\D/g, ''),
+                    type: 'get',
+                    success: function (res) {
+                        if (res.code) {
+                            res.RecipeStep = res.RecipeStep.split('\n').map(function (str) {
+                                return str.trim()
+                            }).join('\n')
+                            that.recipe = res
+                            document.title = res.RecipeName
+                        }
+                    }
+                })
+                this.validateLogin(function () {
+                    $.ajax({
+                        url: '/api/user/validate',
+                        type: 'get',
+                        success: function (res) {
+                            if (res.code == 1) {
+                                $.ajax({
+                                    url: `/api/love/${that.userInfo.UserID}/${that.recipe.RecipeId}`,
+                                    type: 'get',
+                                    success: function (res) {
+                                        if (res.code == 0) {
+                                            that.favoriteBtnStatue = true
+                                        } else {
+                                            that.favoriteBtnStatue = false
+                                        }
+                                    }
+                                })
+                            }
+                        }
+                    })
+                })
+            },
+            methods: {
+                addFavorite: function (RecipeId) {
+                    var that = this
+
+                    $.ajax({
+                        url: '/api/love/',
+                        type: 'post',
+                        data: {
+                            RecipeId: RecipeId,
+                            UserId: that.userInfo.UserID,
+                            AddTime: Date.now()
+                        },
+                        success: function (res) {
+                            if (res.code) {
+                                $('.toast').toast({
+                                    delay: 2000
+                                }).toast('show')
+                                that.favoriteBtnStatue = false
+                            }
+                        }
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

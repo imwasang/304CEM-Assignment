@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/lib/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="/stylesheets/base.css">
+    <script src="/lib/jquery/jquery.js"></script>
+    <script src="/lib/vue/vue.js"></script>
+    <script src="/js/base.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <recipe-nav @filter-data="filterData"></recipe-nav>
+        <div class="container content mt-5" id="container">
+        	        <div id="page-title"></div>
+            <div class="media mb-5" v-for="item in filterList" :key="item.RecipeId">
+                <a class="mr-4 col-md-5" :href="`/detail.html?recipeid=${item.RecipeId}`">
+                	<img :src="item.RecipePicture" class="left-img">
+                </a>
+                <div class="media-body">
+                    <div class="category">
+                        <a :href="`?category=${item.RecipeCategory}`"> {{item.RecipeCategory}}</a>
+                        <div v-if="userInfo.Admin">
+                            <span class="update-txt mr-2" @click="updateRecipe(item.RecipeId)">Update</span>
+                            <span class="delete-txt" @click="deleteRecipe(item.RecipeId,item.RecipePicture)">Delete</span>
+                        </div>
+                    </div>
+                    <h4 class="name"><a :href="`/detail.html?recipeid=${item.RecipeId}`">{{item.RecipeName}}</a></h4>
+                    <p class="time">Cooking Time: {{item.RecipeTime}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div aria-live="polite" aria-atomic="true" class="toast-wrap">
+            <div class="toast" style="position: absolute; top: 0; right: 0;">
+                <div class="toast-header">
+                    <strong class="mr-4">Message</strong>
+                    <small>1 second ago</small>
+                    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="toast-body">
+                    Deleted successfully
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            mixins: [userMixin,toastMixin,navCategoriesMixin],
+            methods: {
+                updateRecipe: function (RecipeId) {
+                    location.href = `/editRecipe.html?RecipeId=${RecipeId}`
+                },
+                deleteRecipe: function (RecipeId,
+                    RecipePicture) {
+                    var that = this
+                    $.ajax({
+                        url: `/api/recipe/${RecipeId}`,
+                        type: 'delete',
+                        data: {
+                            RecipePicture: RecipePicture
+                        },
+                        success: function (res) {
+                            if (res.code == 1) {
+                                $.ajax({
+                                    url: '/api/recipe',
+                                    type: 'get',
+                                    success: function (res) {
+                                        that.filterList = res.list;
+                                    }
+                                })
+                            }
+                        }
+                    })
+                }
+            }
+        })
+    </script>
+   
+   
+</body>
+
+</html>

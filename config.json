@@ -1,0 +1,10 @@
+{
+    "init": true,
+    "database": {
+        "host": "localhost",
+        "user": "root",
+        "port": 8889,
+        "password": "root",
+        "database": "RecipeDB"
+    }
+}

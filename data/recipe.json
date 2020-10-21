@@ -1,0 +1,83 @@
+[
+    {
+        "RecipeId": 1,
+        "RecipeName": "Chilli and garlic spaghetti with mussels and pickled seaweed",
+        "RecipePicture": "/images/Chilli.png",
+        "RecipeMater": "",
+        "RecipeStep": "Ingredients:\r\n    Spaghetti with mussels\r\n    1.2kg mussels\r\n    400g of spaghetti\r\n    4 garlic cloves, peeled\r\n    2 chillies\r\n    olive oil\r\n    1 tsp dried lemon myrtle leaf\r\n    lemon verbena, leaves only\r\n    Pickled seaweed\r\n    40g of seaweed, preferably kelp\r\n    50g of rice vinegar\r\n    35g of sugar\r\n    100g of water\r\n    1 pinch of salt\r\n    \r\n    Procedures:\r\n    1\r\n    Begin by making the pickled seaweed. Combine the rice vinegar, sugar, water and a pinch of salt to a small pan, stirring well to combined. Bring to the boil, then remove from the heat and allow to cool. Wash the seaweed in cold water, pat dry and add to the pickling mixture. Transfer to a covered container and leave to pickle overnight\r\n    50g of rice vinegar\r\n    35g of sugar\r\n    100g of water\r\n    1 pinch of salt\r\n    40g of seaweed\r\n    2\r\n    Prepare the mussels by placing in a colander and rinsing thoroughly in plenty of cold water, then remove the beards with a small knife\r\n    1.2kg mussels\r\n    3\r\n    Place a large pan with a fitted lid over a high heat and add a drizzle of oil. Sauté two of the whole garlic cloves for a couple of minutes before adding the mussels. Add a ladleful of water and cover with the lid, cooking for 2–3 minutes until the shells have opened. Discard any that remain closed, then remove from the heat and leave to cool in the pan\r\n    2 garlic cloves, peeled\r\n    olive oil\r\n    4\r\n    Once cool, remove the mussels from their shells and transfer to a small bowl, discarding the shells. Strain the cooking liquid through a fine sieve to remove the garlic and pour half of it into an ice cream maker and the other half over cooked mussels to ensure they don't dry out before serving. Churn the liquid to make a sorbet and freeze until ready to serve",
+        "RecipeTime": "1 hour 30 minutes",
+        "RecipeCategory": "Spaghetti"
+    },
+    {
+        "RecipeId": 2,
+        "RecipeName": "Spaghetti alla puttanesca",
+        "RecipePicture": "/images/Spaghetti.png",
+        "RecipeMater": "",
+        "RecipeStep": "Ingredients:\r\n    7 anchovy fillets, (in extra virgin olive oil) chopped, plus 4 tbsp of the anchovy oil\r\n    4 garlic cloves, diced\r\n    1/2 red chilli, deseeded and chopped, plus extra if you like more heat\r\n    80g of black olives, half chopped, half left whole\r\n    80g of green olives, half chopped, half left whole\r\n    2 tbsp of capers\r\n    8 cherry tomatoes, halved\r\n    400g of tinned plum tomatoes\r\n    dry white wine, 1/2 a glass\r\n    1 bunch of basil, roughly chopped\r\n    1 unwaxed lemon, zested finely and juiced\r\n    1 tbsp of balsamic vinegar, aged\r\n    160g of wholegrain spelt spaghetti, dried\r\n    sea salt\r\n    freshly ground black pepper\r\n    \r\n    Procedures:\r\n    To begin, place the oil reserved from the anchovies in a large pan and place over a medium heat. Once hot, cook the garlic and chilli in the oil for 2 minutes\r\n    2\r\n    Add the olives, capers, cherry tomatoes, anchovies and white wine to the pan, stir well and cook for 5–6 minutes\r\n    3\r\n    After this time, stir in the tinned tomatoes and bring to the boil. Simmer for approximately 10 minutes\r\n    4\r\n    Taste the sauce to check the seasoning, then stir in more chilli, the balsamic vinegar, and salt and pepper if required\r\n    5\r\n    Cook the spaghetti according to packet instructions. Once cooked, drain the spaghetti, reserving a ladleful of the pasta water\r\n    6\r\n    Add the pasta water to the sauce to loosen it slightly, then stir in the lemon zest, lemon juice and basil. Stir in the spaghetti so everything is coated in the sauce\r\n    7\r\n    Serve immediately, either on 1 serving platter or on 2 plates",
+        "RecipeTime": "40 minutes",
+        "RecipeCategory": "Spaghetti"
+    },
+    {
+        "RecipeId": 3,
+        "RecipeName": "Spaghetti alla carbonara",
+        "RecipePicture": "/images/Spaghetti2.png",
+        "RecipeMater": "",
+        "RecipeStep": "Ingredients:\r\n    200g of spaghetti\r\n    75g of Parmesan, or Pecorino Romano, finely grated, plus extra to serve\r\n    3 egg yolks\r\n    75g of pancetta, or guanciale, cut into lardons\r\n    1 garlic clove, minced\r\n    salt\r\n    black pepper\r\n    \r\n    Procedures:\r\n    Cook the spaghetti in salted boiling water for 8–10 minutes\r\n    2\r\n    Meanwhile, mix together the Parmesan and egg yolks in a small bowl and set aside\r\n    3\r\n    Cook the pancetta in a large frying pan until crispy. Once cooked, reserve the pancetta and the fat that has been released during cooking separately\r\n    4\r\n    Once the pasta is cooked, reserve a ladleful of the pasta water and drain the pasta\r\n    5\r\n    Transfer the pasta to the pancetta frying pan and add the reserved pancetta fat and minced garlic. Gently heat the pan then remove from the heat and quickly stir through the egg yolk and Parmesan mixture. Add a little of the pasta water to emulsify the sauce\r\n    6\r\n    Mix well then add the pancetta and black pepper to taste. Add a little more pasta water if necessary\r\n    7\r\n    Serve immediately with some more freshly grated Parmesan",
+        "RecipeTime": "20 minutes",
+        "RecipeCategory": "Spaghetti"
+    },
+    {
+        "RecipeId": 4,
+        "RecipeName": "Cold tomato soup, smoked cod, marinated anchovies, buffalo ricotta and green chillies",
+        "RecipePicture": "/images/Soup.png",
+        "RecipeMater": "",
+        "RecipeStep": "Ingredients:\r\n    Sou\r\n    100g of tomatoes, washed and quartered\r\n    100g of cherry tomatoes, washed and quartered\r\n    60g of cod\r\n    2 anchovies, fresh\r\n    60g of ricotta\r\n    40g of taralli, cut into small pieces (or croutons if you can't get hold of taralli)\r\n    20g of green chillies, finely sliced\r\n    50ml of anchovy extract\r\n    olive oil\r\n    salt\r\n    pepper\r\n    \r\n    Procedures:\r\n    1\r\n    To begin, add the quartered tomatoes to a container with oil, salt and pepper. Leave to marinate for at least 1 hour\r\n    2\r\n    After this time, blitz in a blender, pass through a fine sieve and reserve in the fridge\r\n    3\r\n    Cut the cod into 2cmx5cm pieces and smoke for approximately 30 minutes using a smoking gun\r\n    4\r\n    Clean the anchovies and place them in the freezer for 15 minutes. Cut into pieces and marinate for a few seconds with some oil and the anchovy extract\r\n    5\r\n    Pass the ricotta cheese through a sieve and place in a piping bag\r\n    6\r\n    Pipe the ricotta onto the bowls and pour over the soup. Add the rest of the ingredients and finish with a swirl of olive oil",
+        "RecipeTime": "45 minutes, plus 1 hour marinating",
+        "RecipeCategory": "Soup"
+    },
+    {
+        "RecipeId": 5,
+        "RecipeName": "Minestrone di verdure",
+        "RecipePicture": "/images/Minestrone.png",
+        "RecipeMater": "",
+        "RecipeStep": "Ingredients:\r\n    Minestrone\r\n    1kg mixed vegetables, such as carrot, celery, cabbage, potato, aubergine and courgette, cubed\r\n    1 garlic clove, peeled and finely chopped\r\n    1 onion, peeled and finely chopped\r\n    2l stock, (beef, chicken or vegetable)\r\n    150g of tubettini pasta\r\n    400g of borlotti beans, drained\r\n    40g of Parmesan, freshly grated\r\n    4 tbsp of olive oil\r\n    \r\n    Procedures:\r\n    1\r\n    Begin by making the pesto. Place the fresh basil, pine nuts, garlic and a pinch of salt in a blender and blitz until you have a smooth paste. Add the olive oil, Parmesan, and 2 tablespoons of water if the mixture looks too dry. You want a thick liquid consistency\r\n    2\r\n    Heat the olive oil in a large saucepan and fry the garlic and onion for 2 minutes\r\n    3\r\n    Add the prepared vegetables and stock and cook for about 12 minutes. Add the drained beans and pasta and cook for about 6–7 minutes, or until tender. Remove the pan from the heat and stir in the pesto\r\n    4\r\n    When ready to serve, heat the soup very gently and season with salt and pepper. Sprinkle over the Parmesan and serve immediately",
+        "RecipeTime": "30 minutes",
+        "RecipeCategory": "Soup"
+    },
+    {
+        "RecipeId": 6,
+        "RecipeName": "Seafood soup with fregula, basil and citrus",
+        "RecipePicture": "/images/Soup2.png",
+        "RecipeMater": "",
+        "RecipeStep": "Ingredients:\r\n    300g of semolina flour\r\n    100g of water\r\n    salt\r\n    Seafood soup\r\n    600g of rock fish, a mixture such as red mullet and scorpion fish, gutted\r\n    4 red prawns\r\n    16 mussels\r\n    16 clams\r\n    4 squid, or cuttlefish\r\n    \r\n    \r\n    Procedures:\r\n    1\r\n    Preheat the oven to 100°C/gas mark ¼\r\n    2\r\n    Start with the confit tomatoes. Arrange the cherry tomatoes across a deep baking dish in a single layer and pour over just enough olive oil to cover. Transfer to the oven and slowly roast for 3 hours until tender. Set aside until needed\r\n    20 cherry tomatoes\r\n    extra virgin olive oil\r\n    3\r\n    While the tomatoes are roasting, prepare the fish and seafood. Clean the whole fish in cold water then carefully remove the heads and bones, reserving these for the fish broth. Dice the flesh and set aside in the fridge\r\n    600g of rock fish, a mixture such as red mullet and scorpion fish, gutted\r\n    4\r\n    Remove the shells from the bodies of the prawns, leaving the heads intact for decoration. Remove the mussels and clams from their shells and combine all of the shells with the reserved bones for the fish broth",
+        "RecipeTime": "2 hours, plus 3 hours confit",
+        "RecipeCategory": "Soup"
+    },
+    {
+        "RecipeId": 7,
+        "RecipeName": "Piedmontese Carnaroli risotto with veal tongue, hazelnuts and Grana Padano",
+        "RecipePicture": "/images/Piedmontese.png",
+        "RecipeMater": "",
+        "RecipeStep": "Ingredients:\r\n    Veal stock (you can buy this to save time if preferred)\r\n    500g of veal bones, ask your butcher to saw them open\r\n    1 onion, chopped\r\n    1 carrot, chopped\r\n    1 celery stick, chopped\r\n    1 tbsp of tomato paste\r\n    To cook the veal tongue\r\n    1 veal tongue\r\n    1 carrot, chopped\r\n    1 celery stick, chopped\r\n    1 onion, chopped\r\n    1 bay leaf\r\n    \r\n    Procedures:\r\n    1\r\n    Preheat the oven to 180°C/gas mark 4\r\n    2\r\n    Roast the veal bones for 1–1½ hours until well-browned. Transfer to a large saucepan and add the carrot, onion and celery. Cover with water and simmer for 3 hours\r\n    3\r\n    Meanwhile, cook the veal tongue. Add the tongue to a large stock pot with the carrot, onion, celery, bay and peppercorns. Cover with water, bring to the boil then reduce the heat and simmer very gently for 2 hours. Remove from the heat and allow to cool in the cooking liquid\r\n    4\r\n    After 3 hours, pass the veal stock through a sieve into a clean pan and reduce until dark and rich\r\n    5\r\n    Remove the tongue from the liquid and peel using a paring knife. Leave to set in the fridge for at least 45 minutes\r\n    6\r\n    Place the hazelnuts in a food processor and grind to a powder. Set aside until ready to serve",
+        "RecipeTime": "60 minutes",
+        "RecipeCategory": "Risotto"
+    },
+    {
+        "RecipeId": 8,
+        "RecipeName": "Risotto alla Milanese with red wine reduction",
+        "RecipePicture": "/images/Risotto.png",
+        "RecipeMater": "",
+        "RecipeStep": "Ingredients\r\n    Bone marrow for the risotto and garnish\r\n    2 pieces of bone marrow, each about 12cm long\r\n    salt\r\n    pepper\r\n    lemon juice, optional\r\n    Risotto alla Milanese\r\n    40g of bone marrow, from one of the pieces above\r\n    80g of butter\r\n    40g of onion, diced\r\n    \r\n    Procedures:\r\n    1\r\n    To begin, prepare the bone marrow for the dish. Preheat the oven to 200°C/gas mark 6\r\n    2\r\n    Place the bones on a tray and roast in the oven for 5 minutes, until the marrow just starts to melt away from the bones. Remove from the oven and carefully scoop out the marrow. Slice one of the bone marrow pieces into four even portions. At this stage, you can either cook the portions sous vide for 1 hour with a little salt and pepper at 68.3°C, or set them aside ready to warm through later before serving. Weight the other piece of bone marrow – you will need 40g for the risotto\r\n    2 pieces of bone marrow, each about 12cm long\r\n    3\r\n    For the red wine reduction, place the wine in a saucepan and place over a medium high heat. Reduce by half, then whisk in the butter until rich and glossy. Set aside in the pan\r\n    4\r\n    To make the risotto, place the 40g of bone marrow in a pan with 50g of the butter and add the onions and saffron. Cook the onions gently until softened and translucent\r\n    \r\n    5\r\n    Add the rice and toast for a few minutes, stirring with a wooden spoon",
+        "RecipeTime": "1 hour 15 minutes",
+        "RecipeCategory": "Risotto"
+    },
+    {
+        "RecipeId": 9,
+        "RecipeName": "Coffee and Parmesan cream risotto",
+        "RecipePicture": "/images/Coffee.png",
+        "RecipeMater": "",
+        "RecipeStep": "Ingredients:\r\n    350g of carnaroli risotto rice\r\n    1/2 carrot, chopped\r\n    1/2 onion, chopped\r\n    1/2 stick of celery, chopped\r\n    1l hot water\r\n    40g of butter\r\n    30g of grated Parmesan\r\n    ground coffee, to serve\r\n    Sarawak black pepper\r\n    \r\n    Procedures:\r\n    1\r\n    Start by making a vegetable stock for the risotto. Place the chopped carrot, celery and onion in a large pan and cover with the hot water. Place over a low heat and leave to simmer gently for 4 hours\r\n    1/2 carrot, chopped\r\n    1/2 onion, chopped\r\n    1/2 stick of celery, chopped\r\n    1l hot water\r\n    2\r\n    Meanwhile, prepare the beer reduction. Pour the beer into a large pan and place over a high heat. Bring to the boil, turn down to a simmer and allow to reduce to approximately 200ml. The reduction should be sticky, dark, bitter sweet and malty in flavour. Remove from the heat and set aside at room temperature until ready to serve\r\n    750ml of lager beer\r\n    3\r\n    When the stock has about 30 minutes cooking time remaining, start the Parmesan cream. Pour the cream into a pan and stir in the Parmesan. Place over a very low heat and gently cook, stirring occasionally, for 30 minutes until thick and creamy\r\n    75g of cream\r\n    150g of Parmesan, grated\r\n    4\r\n    Strain the stock and discard the vegetables, keeping both the stock and Parmesan cream warm while you start the risotto. Heat a large pan over a medium heat, add the rice and toast for 2–3 minutes, stirring constantly to ensure the rice doesn't catch or burn\r\n    350g of carnaroli risotto rice",
+        "RecipeTime": "4 hours 30 minutes",
+        "RecipeCategory": "Risotto"
+    }
+]
